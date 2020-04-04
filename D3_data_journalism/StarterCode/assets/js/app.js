@@ -43,6 +43,17 @@ d3.csv("assets/data/data.csv").then(function(statData) {
     var xScale = d3.scaleLinear ()
         .domain([0, d3.max(statData, d => d.obesity)])
         .range([0, chartWidth]);
-    
 
+    //create the axis for x and y, pass in the scale functions
+    var xAxis = d3.axisBottom(xScale);
+    var yAxis = d3.axisLeft(yScale);
+    
+    //append two SVG group elements to the chartGroup area and include the bottom and left axis inside
+    chartGroup.append("g")
+        .attr("transform", `translate(0, ${chartHeight})`)
+        .call(xAxis);
+    chartGroup.append("g")
+        .call(yAxis);
+    
+    //
 });
