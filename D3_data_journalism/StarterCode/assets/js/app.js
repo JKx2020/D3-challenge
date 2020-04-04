@@ -1,7 +1,7 @@
 // @TODO: YOUR CODE HERE
 //define svg parameters
-var svgWidth = 1000;
-var svgHeight = 1000;
+var svgWidth = 500;
+var svgHeight = 500;
 
 //define margins
 var chartMargins ={
@@ -56,5 +56,14 @@ d3.csv("assets/data/data.csv").then(function(statData) {
         .call(yAxis);
     
     //create one SVG circle per piece stat
-    chartGroup.selectAll(".")
+    chartGroup.selectAll(".dot")
+        .data(statData)
+        .enter()
+        .append("circle")
+            .attr("cx", d => xScale(d.obesity))
+            .attr("cy", d => yScale(d.healthcare))
+            .attr("r", 5)
+            .attr("fill", "blue")
+
+
 });
