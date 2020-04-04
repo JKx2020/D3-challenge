@@ -14,7 +14,7 @@
     //define margins
     var chartMargins ={
         top: 30,
-        bottom: 30,
+        bottom: 60,
         left: 30,
         right: 30
     };
@@ -77,15 +77,18 @@
             .attr("fill", "blue");
 
         //initialize the tool tip, add the tooltip to the chart, create event listener to trigger the tooltip
+        //initialize the tooltip
         var toolTip = d3.tip()
             .attr("class", "d3-tip")
             .offset([80, -60])
             .html(function (d) {
-                return (`State: ${d.state}<br>Lacks Healthcare (%): ${d.healthcare}<br>% Obese: ${d.obesity}`);
+                return (`State: ${d.state}<br>% Lacks Healthcare: ${d.healthcare}<br>% Obese: ${d.obesity}`);
             });
-
+        
+        //add the tooltip to the chartGroup
         chartGroup.call(toolTip);
 
+        //create the event listener
         circlesGroup.on("mouseover", function(data) {
             toolTip.show(data, this);
         })
@@ -94,8 +97,10 @@
             });
 
         //Create x-axis label
-        // chartGroup.append("text")
-        //     .attr("transform", `translate(0, ${ch})`)
+        chartGroup.append("text")
+            .attr("transform", `translate(${chartWidth/4}, ${chartHeight+chartMargins.top+10})`)
+            .classed("axisText", true)
+            .text("% of Population Obese by State");
 
     });
 
