@@ -15,7 +15,7 @@ var chartMargins ={
 var chartWidth = svgWidth-chartMargins.left-chartMargins.right;
 var chartHeight = svgHeight-chartMargins.top-chartMargins.bottom;
 //create svg element
-var svg = d3.select("body")
+var svg = d3.select("#scatter")
     .append("svg")
     .attr("height", svgHeight)
     .attr("width", svgWidth);
@@ -55,5 +55,6 @@ d3.csv("assets/data/data.csv").then(function(statData) {
     chartGroup.append("g")
         .call(yAxis);
     
-    //
+    //create one SVG circle per piece stat
+    chartGroup.selectAll(".")
 });
