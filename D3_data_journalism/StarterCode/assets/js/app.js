@@ -27,7 +27,7 @@ var chartGroup = svg.append("g")
 //pull in csv
 d3.csv("assets/data/data.csv").then(function(statData) {
     console.log(statData);
-    var healthcare = []
+
     //loop thru the data and cast the stats as numbers
     statData.forEach(function(data) {
         data.healthcare = +data.healthcare; 
@@ -36,13 +36,13 @@ d3.csv("assets/data/data.csv").then(function(statData) {
     });
    
     //create a scale for x & y data
-    var yScale = {
-        domain:([0, d3.max(data, d => data.healthcare)])
-        range: ([chartHeight, 0]);
-    };
-    var xScale = {
-        domain:([0, d3.max(data, d => data.obesity)])
-        range: ([0, chartWidth]);
-    };
+    var yScale = d3.scaleLinear()
+        .domain([0, d3.max(statData, d => d.healthcare)])
+        .range([chartHeight, 0]);
+
+    var xScale = d3.scaleLinear ()
+        .domain([0, d3.max(statData, d => d.obesity)])
+        .range([0, chartWidth]);
+    
 
 });
