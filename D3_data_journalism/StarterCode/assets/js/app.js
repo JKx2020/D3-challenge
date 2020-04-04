@@ -15,7 +15,7 @@
     var chartMargins ={
         top: 30,
         bottom: 60,
-        left: 30,
+        left: 60,
         right: 30
     };
 
@@ -98,9 +98,17 @@
 
         //Create x-axis label
         chartGroup.append("text")
-            .attr("transform", `translate(${chartWidth/4}, ${chartHeight+chartMargins.top+10})`)
+            .attr("transform", `translate(${chartWidth/2}, ${chartHeight+chartMargins.top+10})`)
             .classed("axisText", true)
             .text("% of Population Obese by State");
+
+        //create y-axis label
+        chartGroup.append("text")
+            .attr("transform", `rotate(-90)`)
+            .attr("y", -30)
+            .attr("x", -(chartHeight/2))
+            .attr("class", "axisText")
+            .text("% of Population Without Health Insurance by State")
 
     });
 
