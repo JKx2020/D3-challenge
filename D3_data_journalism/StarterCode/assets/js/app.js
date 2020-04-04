@@ -25,6 +25,8 @@ var chartGroup = svg.append("g")
     .attr("transform", `translate(${chartMargins.left}, ${chartMargins.top})`);
 
 //pull in csv
-d3.csv("../data/data.csv").then(function(data) {
-    console.log(data);
-})
+d3.csv("assets/data/data.csv").then(function(statData) {
+    console.log(statData);
+
+    
+});
