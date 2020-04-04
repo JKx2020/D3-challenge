@@ -86,7 +86,7 @@
 
         chartGroup.call(toolTip);
 
-        circlesGroup.on("click", function(data) {
+        circlesGroup.on("mouseover", function(data) {
             toolTip.show(data, this);
         })
             .on("mouseout", function(data, index) {
@@ -94,8 +94,8 @@
             });
 
         //Create x-axis label
-        chartGroup.append("text")
-            .attr("transform", `translate(0, ${ch})`)
+        // chartGroup.append("text")
+        //     .attr("transform", `translate(0, ${ch})`)
 
     });
 
