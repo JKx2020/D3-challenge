@@ -29,6 +29,7 @@ function makeResponsive() {
     //create svg element
     var svg = d3.select("#scatter")
         .append("svg")
+        .classed("chart", true)
         .attr("height", svgHeight)
         .attr("width", svgWidth);
         //.attr("viewBox", `0 0 100 100`)
@@ -78,8 +79,19 @@ function makeResponsive() {
             .classed("stateCircle", true)
             .attr("cx", d => xScale(d.obesity))
             .attr("cy", d => yScale(d.healthcare))
-            .attr("r", "7")
+            .attr("r", "15")
             .attr("fill", "blue");
+        
+        //add state abbr labes to the dots
+        var stateLabel = chartGroup.selectAll(".stateText")
+            .data(statData)
+            .enter()
+            .append("text")
+            .classed("stateText", true)
+            .attr("x", d => xScale(d.obesity))
+            .attr("y", d => yScale(d.healthcare))
+            .text(d => d.abbr);
+            
 
         //initialize the tool tip, add the tooltip to the chart, create event listener to trigger the tooltip
         //initialize the tooltip
