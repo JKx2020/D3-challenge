@@ -11,11 +11,8 @@ function makeResponsive() {
     }
 
     //define svg parameters
-    var svgWidth = window.innerWidth;
-    var svgHeight = window.innerHeight;
-
-    var svgWidth = 500;
-    var svgHeight = 500;
+    var svgWidth = 820;
+    var svgHeight = 600;
 
     //define margins
     var chartMargins ={
@@ -34,6 +31,8 @@ function makeResponsive() {
         .append("svg")
         .attr("height", svgHeight)
         .attr("width", svgWidth);
+        //.attr("viewBox", `0 0 100 100`)
+
 
     //create svg group & append to svg element
     var chartGroup = svg.append("g")
@@ -52,11 +51,11 @@ function makeResponsive() {
     
         //create a scale for x & y data
         var yScale = d3.scaleLinear()
-            .domain([0, d3.max(statData, d => d.healthcare)])
+            .domain([0, 30])
             .range([chartHeight, 0]);
 
         var xScale = d3.scaleLinear ()
-            .domain([0, d3.max(statData, d => d.obesity)])
+            .domain([0, 40])
             .range([0, chartWidth]);
 
         //create the axis for x and y, pass in the scale functions
@@ -79,7 +78,7 @@ function makeResponsive() {
             .classed("stateCircle", true)
             .attr("cx", d => xScale(d.obesity))
             .attr("cy", d => yScale(d.healthcare))
-            .attr("r", "5")
+            .attr("r", "7")
             .attr("fill", "blue");
 
         //initialize the tool tip, add the tooltip to the chart, create event listener to trigger the tooltip
@@ -105,15 +104,15 @@ function makeResponsive() {
         //Create x-axis label
         chartGroup.append("text")
             .attr("transform", `translate(${chartWidth/2}, ${chartHeight+chartMargins.top+10})`)
-            .classed("axisText", true)
+            .classed("aText", true)
             .text("% of Population Obese by State");
 
         //create y-axis label
         chartGroup.append("text")
             .attr("transform", `rotate(-90)`)
             .attr("y", -30)
-            .attr("x", -(chartHeight/2))
-            .attr("class", "axisText")
+            .attr("x", 0-(chartHeight/2))
+            .attr("class", "aText")
             .text("% of Population Without Health Insurance by State")
 
     });
