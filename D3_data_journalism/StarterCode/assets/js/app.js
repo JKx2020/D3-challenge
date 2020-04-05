@@ -1,12 +1,18 @@
 // @TODO: YOUR CODE HERE
 
 //wrap the chart code in a function that automatically resizes the chart
-// function makeResponsive () {
+function makeResponsive() {
 
+    //clear any SVG area upon resize
+    var svgArea = d3.select("#scatter").select("svg");
+
+    if (!svgArea.empty()) {
+      svgArea.remove();
+    }
 
     //define svg parameters
-    // var svgWidth = window.innerWidth;
-    // var svgHeight = window.innerHeight;
+    var svgWidth = window.innerWidth;
+    var svgHeight = window.innerHeight;
 
     var svgWidth = 500;
     var svgHeight = 500;
@@ -112,10 +118,10 @@
 
     });
 
-// 
+}
 
-// // When the browser loads, makeResponsive() is called.
-// makeResponsive();
+// When the browser loads, makeResponsive() is called.
+makeResponsive();
 
-// // When the browser window is resized, makeResponsive() is called.
-// d3.select(window).on("resize", makeResponsive);
+// When the browser window is resized, makeResponsive() is called.
+d3.select(window).on("resize", makeResponsive);
