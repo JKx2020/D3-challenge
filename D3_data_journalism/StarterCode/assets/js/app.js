@@ -11,8 +11,8 @@ function makeResponsive() {
     }
 
     //define svg parameters
-    var svgWidth = 820;
-    var svgHeight = 600;
+    var svgWidth = 1100;
+    var svgHeight = 700;
 
     //define margins
     var chartMargins ={
@@ -52,11 +52,11 @@ function makeResponsive() {
     
         //create a scale for x & y data
         var yScale = d3.scaleLinear()
-            .domain([0, 30])
+            .domain([0, 28])
             .range([chartHeight, 0]);
 
         var xScale = d3.scaleLinear ()
-            .domain([0, 40])
+            .domain([20, 38])
             .range([0, chartWidth]);
 
         //create the axis for x and y, pass in the scale functions
@@ -79,7 +79,7 @@ function makeResponsive() {
             .classed("stateCircle", true)
             .attr("cx", d => xScale(d.obesity))
             .attr("cy", d => yScale(d.healthcare))
-            .attr("r", "15")
+            .attr("r", "9")
             .attr("fill", "blue");
         
         //add state abbr labes to the dots
